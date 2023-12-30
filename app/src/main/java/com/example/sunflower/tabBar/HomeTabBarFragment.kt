@@ -11,11 +11,21 @@ import com.example.sunflower.tabBar.favorites.ui.FavoritesFragment
 import com.example.sunflower.tabBar.gallery.ui.GalleryFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlin.reflect.KClass
 
-class HomeTabBarFragment : Fragment() {
+class HomeTabBarFragment(
+    private val tabBarInfo: List<TabBarInfo> = TabBarInfo.create()
+) : Fragment() {
 
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
+
+    private val tabTitleList: List<String> = this.tabBarInfo.map {
+        it.tabTitle
+    }
+    private val tabFragmentClazzList: List<KClass<*>> = this.tabBarInfo.map {
+        it.fragmentClazz
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,15 +43,9 @@ class HomeTabBarFragment : Fragment() {
         viewPager = view.findViewById(R.id.viewPager)
         tabLayout = view.findViewById(R.id.tabLayout)
 
-        val adapter = PageAdapter(this)
-
-        viewPager.adapter = adapter
+        viewPager.adapter = PageAdapter(this, this.tabFragmentClazzList)
         TabLayoutMediator(tabLayout, viewPager) { myTabLayout, position ->
-            myTabLayout.text = when (position) {
-                0 -> "Gallery"
-                1 -> "Favorites"
-                else -> throw IllegalArgumentException("Invalid position: $position")
-            }
+            myTabLayout.text = this.tabTitleList[position]
         }.attach()
     }
 }
