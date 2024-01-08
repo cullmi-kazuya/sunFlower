@@ -2,7 +2,7 @@ package com.example.sunflower
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.sunflower.tabBar.HomeTabBarFragment
+import com.example.sunflower.home.HomeTabFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeTabBarFragment())
+                .replace(R.id.fragment_container, HomeTabFragment())
                 .commit()
         }
     }

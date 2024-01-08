@@ -1,4 +1,4 @@
-package com.example.sunflower.tabBar
+package com.example.sunflower.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sunflower.R
-import com.example.sunflower.tabBar.favorites.ui.FavoritesFragment
-import com.example.sunflower.tabBar.gallery.ui.GalleryFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.reflect.KClass
 
-class HomeTabBarFragment(
+class HomeTabFragment(
     private val tabBarInfo: List<TabBarInfo> = TabBarInfo.create()
 ) : Fragment() {
 
@@ -23,15 +21,17 @@ class HomeTabBarFragment(
     private val tabTitleList: List<String> = this.tabBarInfo.map {
         it.tabTitle
     }
+
     private val tabFragmentClazzList: List<KClass<*>> = this.tabBarInfo.map {
         it.fragmentClazz
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home_tab_bar, container, false)
+        return inflater.inflate(R.layout.fragment_home_tab, container, false)
     }
 
     override fun onViewCreated(

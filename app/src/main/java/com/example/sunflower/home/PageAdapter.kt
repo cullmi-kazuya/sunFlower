@@ -1,9 +1,7 @@
-package com.example.sunflower.tabBar
+package com.example.sunflower.home
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.sunflower.tabBar.favorites.ui.FavoritesFragment
-import com.example.sunflower.tabBar.gallery.ui.GalleryFragment
 import kotlin.reflect.KClass
 
 class PageAdapter(

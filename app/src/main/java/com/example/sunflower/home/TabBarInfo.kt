@@ -1,9 +1,7 @@
-package com.example.sunflower.tabBar
+package com.example.sunflower.home
 
-import androidx.annotation.StringRes
-import com.example.sunflower.R
-import com.example.sunflower.tabBar.favorites.ui.FavoritesFragment
-import com.example.sunflower.tabBar.gallery.ui.GalleryFragment
+import com.example.sunflower.home.favorites.ui.FavoritesFragment
+import com.example.sunflower.home.gallery.ui.GalleryFragment
 import kotlin.reflect.KClass
 
 sealed class TabBarInfo(
