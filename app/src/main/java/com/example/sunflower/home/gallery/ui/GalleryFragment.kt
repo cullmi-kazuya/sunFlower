@@ -1,5 +1,6 @@
 package com.example.sunflower.home.gallery.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,18 @@ import com.example.sunflower.R
 import com.example.sunflower.customCell.data.FruitCellItem
 import com.example.sunflower.customCell.ui.CustomCellAdapter
 import org.json.JSONArray
+import java.io.InputStream
 
 class GalleryFragment : Fragment() {
 
-    private val itemList: List<FruitCellItem> = run {
-        val jsonString = context?.assets?.open("fruits.json")?.bufferedReader().use {
-            it?.readText() ?: ""
+    private lateinit var itemList: List<FruitCellItem>
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        val inputStream: InputStream = context.assets.open("fruits.json")
+        val jsonString = inputStream.bufferedReader().use {
+            it.readText()
         }
         val jsonArray = JSONArray(jsonString)
         val dataList = mutableListOf<FruitCellItem>()
@@ -30,7 +37,7 @@ class GalleryFragment : Fragment() {
             val imageUrl = jsonObject.getString("imageUrl")
             dataList.add(FruitCellItem(fruitId, name, text, reference, imageUrl))
         }
-        dataList
+        this.itemList = dataList
     }
 
     override fun onCreateView(
