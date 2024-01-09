@@ -1,15 +1,16 @@
 package com.example.sunflower.customCell.ui
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.sunflower.R
-import java.net.URL
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CustomCellView(
     context: Context,
@@ -26,7 +27,9 @@ class CustomCellView(
     }
 
     fun setImage(imageUrl: String) {
-        this.image.setImageURI(Uri.parse(imageUrl))
+        Picasso.get()
+            .load(imageUrl)
+            .into(this.image)
     }
 
     fun setName(nameText: String) {
