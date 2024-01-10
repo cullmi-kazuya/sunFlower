@@ -4,10 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.sunflower.R
+import com.example.sunflower.app.home.ui.HomeTabFragmentDirections
 import com.squareup.picasso.Picasso
 
 class FruitsDetailFragment: Fragment() {
@@ -36,5 +43,12 @@ class FruitsDetailFragment: Fragment() {
         val fruitsTextView = view.findViewById<TextView>(R.id.fruitsText)
         val fruitsText = arguments?.getString("fruitsText") ?: ""
         fruitsTextView.text = fruitsText
+
+        val photographerButton = view.findViewById<ImageButton>(R.id.photographerButton)
+        photographerButton.setOnClickListener {
+            val action = FruitsDetailFragmentDirections
+                .actionFruitsDetailFragmentToPhotographerListFragment("Strawberry")
+            findNavController().navigate(action)
+        }
     }
 }
