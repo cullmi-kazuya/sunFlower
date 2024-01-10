@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.sunflower.R
+import com.squareup.picasso.Picasso
 
 class FruitsDetailFragment: Fragment() {
 
@@ -20,10 +22,19 @@ class FruitsDetailFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val fruitsImage = view.findViewById<ImageView>(R.id.fruitsImage)
-    }
 
-    private fun initFruitsImageView(fruitsImage: ImageView) {
+        val fruitsImageView = view.findViewById<ImageView>(R.id.fruitsImage)
+        val imageUrl = arguments?.getString("imageUrl") ?: ""
+        Picasso.get()
+            .load(imageUrl)
+            .into(fruitsImageView)
 
+        val fruitsNameView = view.findViewById<TextView>(R.id.fruitsName)
+        val fruitsName = arguments?.getString("fruitsName") ?: ""
+        fruitsNameView.text = fruitsName
+
+        val fruitsTextView = view.findViewById<TextView>(R.id.fruitsText)
+        val fruitsText = arguments?.getString("fruitsText") ?: ""
+        fruitsTextView.text = fruitsText
     }
 }

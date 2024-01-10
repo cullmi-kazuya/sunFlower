@@ -10,17 +10,19 @@
 
     <FrameLayout android:id="@+id/FrameLayout01"
         android:layout_width="match_parent"
-        android:layout_height="285dp">
+        android:layout_height="280dp">
 
         <ImageView
+            android:layout_marginTop="20dp"
             android:id="@+id/fruitsImage"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="240dp" />
 
         <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="215dp"
+            android:id="@+id/photographerButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="220dp"
             android:layout_marginEnd="40dp"
             android:layout_gravity="end"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -28,13 +30,17 @@
     </FrameLayout>
 
     <TextView
-        android:layout_marginTop="16dp"
+        android:id="@+id/fruitsName"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="35dp"
+        android:textStyle="bold"
+        android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/fruitsText"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

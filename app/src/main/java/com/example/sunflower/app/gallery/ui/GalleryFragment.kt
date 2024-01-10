@@ -13,7 +13,7 @@ import com.example.sunflower.R
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.gallery.data.FruitsInfo
 import com.example.sunflower.app.home.ui.CustomCellAdapter
-import com.example.sunflower.home.HomeTabFragmentDirections
+import com.example.sunflower.app.home.ui.HomeTabFragmentDirections
 import org.json.JSONArray
 import java.io.InputStream
 
@@ -65,7 +65,12 @@ class GalleryFragment : Fragment() {
             RecyclerItemClickListener(requireContext(), recyclerView,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
-                        val action = HomeTabFragmentDirections.actionHomeTabFragmentToFruitsDetailFragment(position)
+                        val fruits = itemList[position]
+                        val action = HomeTabFragmentDirections.actionHomeTabFragmentToFruitsDetailFragment(
+                            fruits.imageUrl,
+                            fruits.name,
+                            fruits.text
+                        )
                         findNavController().navigate(action)
                     }
                 }

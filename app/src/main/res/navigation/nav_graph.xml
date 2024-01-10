@@ -10,13 +10,20 @@
         android:name="com.example.sunflower.app.home.ui.HomeTabFragment"
         android:label="HomeTabFragment"
         tools:layout="@layout/fragment_home_tab">
+
         <action
             android:id="@+id/action_homeTabFragment_to_fruitsDetailFragment"
             app:destination="@id/fruitsDetailFragment">
             <argument
-                android:name="fruitId"
-                app:argType="integer" />
-            </action>
+                android:name="imageUrl"
+                app:argType="string" />
+            <argument
+                android:name="fruitsName"
+                app:argType="string" />
+            <argument
+                android:name="fruitsText"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
