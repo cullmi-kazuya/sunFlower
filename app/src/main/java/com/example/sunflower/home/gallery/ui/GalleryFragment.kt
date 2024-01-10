@@ -2,17 +2,19 @@ package com.example.sunflower.home.gallery.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.VideoView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
 import com.example.sunflower.core.adapter.RecyclerItemClickListener
 import com.example.sunflower.customCell.data.FruitCellItem
 import com.example.sunflower.customCell.ui.CustomCellAdapter
+import com.example.sunflower.home.HomeTabFragmentDirections
 import org.json.JSONArray
 import java.io.InputStream
 
@@ -47,20 +49,28 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_gallery, container, false)
+        return inflater.inflate(R.layout.fragment_gallery, container, false)
+    }
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerList)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        this.initRecycleView(recyclerView = view.findViewById(R.id.recyclerList))
+    }
+
+    private fun initRecycleView(recyclerView: RecyclerView) {
         recyclerView.adapter = CustomCellAdapter(itemList)
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
-
-        recyclerView.addOnItemTouchListener(RecyclerItemClickListener(requireContext(), recyclerView,
-            object: RecyclerItemClickListener.OnItemClickListener {
-                override fun onItemClick(view: View, position: Int) {
-                    Log.i("sample", "click ${position}")
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(requireContext(), recyclerView,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        val action = HomeTabFragmentDirections.actionHomeTabFragmentToFruitsDetailFragment(position)
+                        findNavController().navigate(action)
+                    }
                 }
-            })
+            )
         )
-        return view
     }
 }
