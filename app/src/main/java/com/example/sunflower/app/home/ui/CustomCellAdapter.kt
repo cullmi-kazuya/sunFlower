@@ -1,13 +1,13 @@
-package com.example.sunflower.customCell.ui
+package com.example.sunflower.app.home.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
-import com.example.sunflower.customCell.data.FruitCellItem
+import com.example.sunflower.app.gallery.data.FruitsInfo
 
-class CustomCellAdapter(private val dataList: List<FruitCellItem>):
+class CustomCellAdapter(private val dataList: List<FruitsInfo>):
     RecyclerView.Adapter<CustomCellAdapter.ViewHolder>()
 {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

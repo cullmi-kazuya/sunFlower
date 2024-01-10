@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".home.HomeTabFragment"
+    tools:context=".app.home.ui.HomeTabFragment"
     tools:ignore="MissingClass">
 
     <FrameLayout android:id="@+id/FrameLayout01"
@@ -13,7 +13,7 @@
         android:layout_height="285dp">
 
         <ImageView
-            android:id="@+id/mainImage"
+            android:id="@+id/fruitsImage"
             android:layout_width="match_parent"
             android:layout_height="250dp" />
 

@@ -1,4 +1,4 @@
-package com.example.sunflower.customCell.ui
+package com.example.sunflower.app.home.ui
 
 import android.content.Context
 import android.util.AttributeSet

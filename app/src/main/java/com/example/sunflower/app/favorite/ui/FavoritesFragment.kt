@@ -1,4 +1,4 @@
-package com.example.sunflower.home.favorites.ui
+package com.example.sunflower.app.favorite.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.example.sunflower.home
+package com.example.sunflower.app.home.ui
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

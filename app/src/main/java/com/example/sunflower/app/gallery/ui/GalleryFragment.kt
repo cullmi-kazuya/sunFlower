@@ -1,26 +1,25 @@
-package com.example.sunflower.home.gallery.ui
+package com.example.sunflower.app.gallery.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
-import com.example.sunflower.core.adapter.RecyclerItemClickListener
-import com.example.sunflower.customCell.data.FruitCellItem
-import com.example.sunflower.customCell.ui.CustomCellAdapter
+import com.example.sunflower.app.home.ui.RecyclerItemClickListener
+import com.example.sunflower.app.gallery.data.FruitsInfo
+import com.example.sunflower.app.home.ui.CustomCellAdapter
 import com.example.sunflower.home.HomeTabFragmentDirections
 import org.json.JSONArray
 import java.io.InputStream
 
 class GalleryFragment : Fragment() {
 
-    private lateinit var itemList: List<FruitCellItem>
+    private lateinit var itemList: List<FruitsInfo>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -30,7 +29,7 @@ class GalleryFragment : Fragment() {
             it.readText()
         }
         val jsonArray = JSONArray(jsonString)
-        val dataList = mutableListOf<FruitCellItem>()
+        val dataList = mutableListOf<FruitsInfo>()
 
         for (i in 0 until jsonArray.length()) {
             val jsonObject = jsonArray.getJSONObject(i)
@@ -39,7 +38,7 @@ class GalleryFragment : Fragment() {
             val text = jsonObject.getString("text")
             val reference = jsonObject.getString("reference")
             val imageUrl = jsonObject.getString("imageUrl")
-            dataList.add(FruitCellItem(fruitId, name, text, reference, imageUrl))
+            dataList.add(FruitsInfo(fruitId, name, text, reference, imageUrl))
         }
         this.itemList = dataList
     }

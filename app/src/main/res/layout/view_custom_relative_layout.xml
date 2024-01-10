@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.sunflower.customCell.ui.CustomCellView
+    <com.example.sunflower.app.home.ui.CustomCellView
         android:id="@+id/customCellView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

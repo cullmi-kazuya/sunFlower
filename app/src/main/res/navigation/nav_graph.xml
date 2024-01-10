@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeTabFragment"
-        android:name="com.example.sunflower.home.HomeTabFragment"
+        android:name="com.example.sunflower.app.home.ui.HomeTabFragment"
         android:label="HomeTabFragment"
         tools:layout="@layout/fragment_home_tab">
         <action

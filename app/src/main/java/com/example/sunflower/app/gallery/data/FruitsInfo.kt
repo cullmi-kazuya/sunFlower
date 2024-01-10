@@ -1,7 +1,7 @@
-package com.example.sunflower.customCell.data
+package com.example.sunflower.app.gallery.data
 
 
-data class FruitCellItem(
+data class FruitsInfo(
     val fruitId: String,
     val name: String,
     val text: String,

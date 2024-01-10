@@ -1,4 +1,4 @@
-package com.example.sunflower.home
+package com.example.sunflower.app.home.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sunflower.R
+import com.example.sunflower.app.home.data.TabBarInfo
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.reflect.KClass
