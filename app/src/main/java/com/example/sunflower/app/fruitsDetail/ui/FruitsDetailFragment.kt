@@ -1,6 +1,7 @@
 package com.example.sunflower.app.fruitsDetail.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,8 @@ class FruitsDetailFragment: Fragment() {
         val photographerButton = view.findViewById<ImageButton>(R.id.photographerButton)
         photographerButton.setOnClickListener {
             val action = FruitsDetailFragmentDirections
-                .actionFruitsDetailFragmentToPhotographerListFragment("Strawberry")
+                .actionFruitsDetailFragmentToPhotoListFragment("Strawberry")
+            Log.i("debug tap","hogehoge")
             findNavController().navigate(action)
         }
     }

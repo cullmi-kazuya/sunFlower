@@ -1,4 +1,4 @@
-package com.example.sunflower.app.photographerList.data.api
+package com.example.sunflower.app.photoList.data.api
 
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -10,7 +10,7 @@ class UnsplashInterceptor(
         val request = chain
             .request()
             .newBuilder()
-            .addHeader("Authorization", accessKey)
+            .addHeader("Authorization", "Client-ID $accessKey")
             .build()
         return chain.proceed(request)
     }

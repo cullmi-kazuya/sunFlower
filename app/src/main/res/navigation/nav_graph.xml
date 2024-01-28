@@ -31,8 +31,8 @@
         android:label="Fruits Detail Fragment"
         tools:layout="@layout/fragment_fruits_detail">
         <action
-            android:id="@+id/action_fruitsDetailFragment_to_photographerListFragment"
-            app:destination="@id/photographerListFragment">
+            android:id="@+id/action_fruitsDetailFragment_to_photoListFragment"
+            app:destination="@id/photoListFragment">
             <argument
                 android:name="fruitsName"
                 app:argType="string" />
@@ -40,10 +40,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/photographerListFragment"
-        android:name="com.example.sunflower.app.photographerList.ui.PhotographerListFragment"
+        android:id="@+id/photoListFragment"
+        android:name="com.example.sunflower.app.photoList.ui.PhotoListFragment"
         android:label="Photographer List Fragment"
-        tools:layout="@layout/fragment_photographer_list">
+        tools:layout="@layout/fragment_photo_list">
     </fragment>
 
 </navigation>
