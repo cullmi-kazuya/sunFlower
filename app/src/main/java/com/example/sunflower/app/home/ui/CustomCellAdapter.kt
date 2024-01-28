@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
-import com.example.sunflower.app.gallery.data.FruitsInfo
+import com.example.sunflower.app.home.data.CellItem
 
-class CustomCellAdapter(private val dataList: List<FruitsInfo>):
-    RecyclerView.Adapter<CustomCellAdapter.ViewHolder>()
-{
+class CustomCellAdapter(
+    private val dataList: List<CellItem>
+): RecyclerView.Adapter<CustomCellAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val customCellView: CustomCellView = itemView.findViewById(R.id.customCellView)
     }
@@ -23,7 +23,7 @@ class CustomCellAdapter(private val dataList: List<FruitsInfo>):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataList[position]
         holder.customCellView.setImage(item.imageUrl)
-        holder.customCellView.setName(item.name)
+        holder.customCellView.setName(item.titleText)
     }
 
     override fun getItemCount(): Int {

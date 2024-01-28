@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.gallery.data.FruitsInfo
+import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
 import com.example.sunflower.app.home.ui.HomeTabFragmentDirections
 import org.json.JSONArray
@@ -58,7 +59,8 @@ class GalleryFragment : Fragment() {
     }
 
     private fun initRecycleView(recyclerView: RecyclerView) {
-        recyclerView.adapter = CustomCellAdapter(itemList)
+        val cellItemList = convertToCellItemList(itemList)
+        recyclerView.adapter = CustomCellAdapter(cellItemList)
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
         recyclerView.addOnItemTouchListener(
@@ -76,5 +78,14 @@ class GalleryFragment : Fragment() {
                 }
             )
         )
+    }
+
+    private fun convertToCellItemList(fruitsInfoList: List<FruitsInfo>): List<CellItem> {
+        return fruitsInfoList.map { fruitsInfo ->
+            CellItem(
+                fruitsInfo.name,
+                fruitsInfo.imageUrl
+            )
+        }
     }
 }

@@ -9,12 +9,11 @@ class SearchPhotosLogic @Inject constructor(
 ) {
     suspend fun getPhotographerList(fruitsName: String): UnsplashSearchPhotosResponse {
         try {
-            val response = apiService.getRandomPhoto(
+            return apiService.getRandomPhoto(
                 fruitsName,
                 1,
-                16
+                20
             )
-            return response
         } catch (e: Exception) {
             throw e
         }
