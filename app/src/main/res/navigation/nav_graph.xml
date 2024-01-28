@@ -10,7 +10,6 @@
         android:name="com.example.sunflower.app.home.ui.HomeTabFragment"
         android:label="HomeTabFragment"
         tools:layout="@layout/fragment_home_tab">
-
         <action
             android:id="@+id/action_homeTabFragment_to_fruitsDetailFragment"
             app:destination="@id/fruitsDetailFragment">
@@ -29,7 +28,22 @@
     <fragment
         android:id="@+id/fruitsDetailFragment"
         android:name="com.example.sunflower.app.fruitsDetail.ui.FruitsDetailFragment"
-        android:label="Second Fragment"
+        android:label="Fruits Detail Fragment"
         tools:layout="@layout/fragment_fruits_detail">
+        <action
+            android:id="@+id/action_fruitsDetailFragment_to_photographerListFragment"
+            app:destination="@id/photographerListFragment">
+            <argument
+                android:name="fruitsName"
+                app:argType="string" />
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/photographerListFragment"
+        android:name="com.example.sunflower.app.photographerList.ui.PhotographerListFragment"
+        android:label="Photographer List Fragment"
+        tools:layout="@layout/fragment_photographer_list">
+    </fragment>
+
 </navigation>
