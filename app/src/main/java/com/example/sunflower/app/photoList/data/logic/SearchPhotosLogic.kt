@@ -7,12 +7,18 @@ import javax.inject.Inject
 class SearchPhotosLogic @Inject constructor(
     private val apiService: UnsplashApiService
 ) {
-    suspend fun getPhotographerList(fruitsName: String): UnsplashSearchPhotosResponse {
+
+    private val perPage = 20
+
+    suspend fun getPhotographerList(
+        fruitsName: String,
+        pageCount: Int
+    ): UnsplashSearchPhotosResponse {
         try {
             return apiService.getRandomPhoto(
                 fruitsName,
-                1,
-                20
+                pageCount,
+                perPage
             )
         } catch (e: Exception) {
             throw e

@@ -60,7 +60,7 @@ class GalleryFragment : Fragment() {
 
     private fun initRecycleView(recyclerView: RecyclerView) {
         val cellItemList = convertToCellItemList(itemList)
-        recyclerView.adapter = CustomCellAdapter(cellItemList)
+        recyclerView.adapter = CustomCellAdapter(cellItemList.toMutableList())
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
         recyclerView.addOnItemTouchListener(

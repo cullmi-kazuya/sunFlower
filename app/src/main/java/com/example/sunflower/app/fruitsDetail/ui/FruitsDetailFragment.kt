@@ -48,8 +48,7 @@ class FruitsDetailFragment: Fragment() {
         val photographerButton = view.findViewById<ImageButton>(R.id.photographerButton)
         photographerButton.setOnClickListener {
             val action = FruitsDetailFragmentDirections
-                .actionFruitsDetailFragmentToPhotoListFragment("Strawberry")
-            Log.i("debug tap","hogehoge")
+                .actionFruitsDetailFragmentToPhotoListFragment(fruitsName)
             findNavController().navigate(action)
         }
     }

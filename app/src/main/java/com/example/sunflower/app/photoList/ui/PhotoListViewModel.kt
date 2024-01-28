@@ -1,6 +1,5 @@
 package com.example.sunflower.app.photoList.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,15 +18,25 @@ class PhotoListViewModel @Inject constructor(
     private var _photoList = MutableLiveData<List<PhotoInfo>>()
     val photoList: LiveData<List<PhotoInfo>> get() = _photoList
 
-    fun getPhotographerList(fruitsName: String) = runBlocking {
-        val response = logic.getPhotographerList(fruitsName)
+    private var pageCount = 0;
+    private var fruitsName: String = ""
+
+    fun setFruitsName(fruitsName: String) {
+        this.fruitsName = fruitsName
+    }
+    fun getPhotoList() = runBlocking {
+        val response = logic.getPhotographerList(
+            fruitsName,
+            pageCount
+        )
+        pageCount ++
+
         val photoList = createPhotoInfoList(response.results)
         _photoList.value = photoList
     }
 
     private fun createPhotoInfoList(photoList: List<Photo>): List<PhotoInfo> {
         return photoList.map { photo ->
-            Log.i("hogehoge", photo.toString())
             PhotoInfo(
                 id = photo.id,
                 userId = photo.user.id,
@@ -36,5 +45,10 @@ class PhotoListViewModel @Inject constructor(
                 photoCellImageUrl = photo.urls.small // ここで適切な写真の画像サイズを選択
             )
         }
+    }
+
+    fun clear() {
+        this.pageCount = 0
+        this.fruitsName = ""
     }
 }

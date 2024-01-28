@@ -1,5 +1,6 @@
 package com.example.sunflower.app.home.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,9 @@ import com.example.sunflower.R
 import com.example.sunflower.app.home.data.CellItem
 
 class CustomCellAdapter(
-    private val dataList: List<CellItem>
+    private val dataList: MutableList<CellItem> = mutableListOf()
 ): RecyclerView.Adapter<CustomCellAdapter.ViewHolder>() {
+
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val customCellView: CustomCellView = itemView.findViewById(R.id.customCellView)
     }
@@ -28,5 +30,11 @@ class CustomCellAdapter(
 
     override fun getItemCount(): Int {
         return dataList.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addData(newData: List<CellItem>) {
+        dataList.addAll(newData)
+        notifyDataSetChanged()
     }
 }

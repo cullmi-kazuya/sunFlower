@@ -12,43 +12,49 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
 import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
+import com.example.sunflower.app.home.ui.RecyclerScrollListener
 import com.example.sunflower.app.photoList.data.model.PhotoInfo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PhotoListFragment : Fragment() {
     private val viewModel: PhotoListViewModel by viewModels()
-    private lateinit var fruitsName: String
     private lateinit var recyclerView: RecyclerView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        this.fruitsName = arguments?.getString("fruitsName") ?: ""
-        viewModel.getPhotographerList(fruitsName)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel.clear()
+        val fruitsName = arguments?.getString("fruitsName") ?: ""
+        viewModel.setFruitsName(fruitsName)
+
         return inflater.inflate(R.layout.fragment_photo_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.recyclerView = view.findViewById(R.id.recyclerList)
+        initRecycleView()
 
         viewModel.photoList.observe(viewLifecycleOwner, Observer { photoList ->
             val cellItemList = convertToCellItemList(photoList)
-            initRecycleView(cellItemList)
+            val adapter = this.recyclerView.adapter as CustomCellAdapter
+            adapter.addData(cellItemList)
         })
+        viewModel.getPhotoList()
     }
 
-    private fun initRecycleView(cellItemList: List<CellItem>) {
-        this.recyclerView.adapter = CustomCellAdapter(cellItemList)
-        this.recyclerView.layoutManager =
-            GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
+    private fun initRecycleView() {
+        this.recyclerView.adapter = CustomCellAdapter()
+
+        val layoutManager = GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
+        this.recyclerView.layoutManager = layoutManager
+        val scrollListener = RecyclerScrollListener(layoutManager) {
+            viewModel.getPhotoList()
+        }
+        recyclerView.addOnScrollListener(scrollListener)
     }
 
     private fun convertToCellItemList(photoList: List<PhotoInfo>): List<CellItem> {
@@ -58,5 +64,10 @@ class PhotoListFragment : Fragment() {
                 photo.photoCellImageUrl
             )
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.clear()
     }
 }
