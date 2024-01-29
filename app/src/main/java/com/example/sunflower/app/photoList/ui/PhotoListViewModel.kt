@@ -41,8 +41,10 @@ class PhotoListViewModel @Inject constructor(
                 id = photo.id,
                 userId = photo.user.id,
                 username = photo.user.username,
-//                profileImageUrl = photo.user.profileImage.medium,
-                photoCellImageUrl = photo.urls.small // ここで適切な写真の画像サイズを選択
+                photoCellImageUrl = photo.urls.small,
+                photoImageUrl = photo.urls.regular,
+                photographerImageUrl = photo.urls.small, // 仮
+                photoText = "hogehoge"
             )
         }
     }

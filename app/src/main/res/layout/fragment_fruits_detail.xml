@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".app.home.ui.HomeTabFragment"
-    tools:ignore="MissingClass">
+    tools:context=".app.home.ui.HomeTabFragment">
 
-    <FrameLayout android:id="@+id/FrameLayout01"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="280dp">
 

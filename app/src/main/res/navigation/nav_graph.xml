@@ -23,6 +23,22 @@
                 android:name="fruitsText"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_homeTabFragment_to_photoFragment"
+            app:destination="@id/photoFragment">
+            <argument
+                android:name="imageUrl"
+                app:argType="string" />
+            <argument
+                android:name="photographerImageName"
+                app:argType="string" />
+            <argument
+                android:name="photographerName"
+                app:argType="string" />
+            <argument
+                android:name="photoText"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -42,8 +58,30 @@
     <fragment
         android:id="@+id/photoListFragment"
         android:name="com.example.sunflower.app.photoList.ui.PhotoListFragment"
-        android:label="Photographer List Fragment"
+        android:label="Photo List Fragment"
         tools:layout="@layout/fragment_photo_list">
+        <action
+            android:id="@+id/action_photoListFragment_to_photoFragment"
+            app:destination="@id/photoFragment">
+            <argument
+                android:name="photoImageUrl"
+                app:argType="string" />
+            <argument
+                android:name="photographerImageUrl"
+                app:argType="string" />
+            <argument
+                android:name="photographerName"
+                app:argType="string" />
+            <argument
+                android:name="photoText"
+                app:argType="string" />
+        </action>
     </fragment>
 
+    <fragment
+        android:id="@+id/photoFragment"
+        android:name="com.example.sunflower.app.photo.ui.PhotoFragment"
+        android:label="Photo Fragment"
+        tools:layout="@layout/fragment_photo">
+    </fragment>
 </navigation>

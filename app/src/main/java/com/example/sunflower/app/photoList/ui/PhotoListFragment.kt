@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
 import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
+import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.home.ui.RecyclerScrollListener
 import com.example.sunflower.app.photoList.data.model.PhotoInfo
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PhotoListFragment : Fragment() {
     private val viewModel: PhotoListViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
+    private val photoList: MutableList<PhotoInfo> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +42,7 @@ class PhotoListFragment : Fragment() {
         initRecycleView()
 
         viewModel.photoList.observe(viewLifecycleOwner, Observer { photoList ->
+            this.photoList.addAll(photoList)
             val cellItemList = convertToCellItemList(photoList)
             val adapter = this.recyclerView.adapter as CustomCellAdapter
             adapter.addData(cellItemList)
@@ -55,6 +59,22 @@ class PhotoListFragment : Fragment() {
             viewModel.getPhotoList()
         }
         recyclerView.addOnScrollListener(scrollListener)
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(requireContext(), recyclerView,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        val photo = photoList[position]
+                        val action = PhotoListFragmentDirections.actionPhotoListFragmentToPhotoFragment(
+                            photo.photoImageUrl,
+                            photo.photographerImageUrl,
+                            photo.username,
+                            photo.photoText
+                        )
+                        findNavController().navigate(action)
+                    }
+                }
+            )
+        )
     }
 
     private fun convertToCellItemList(photoList: List<PhotoInfo>): List<CellItem> {
