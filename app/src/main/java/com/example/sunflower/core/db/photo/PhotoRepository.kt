@@ -1,6 +1,7 @@
-package com.example.sunflower.app.photo.data.db
+package com.example.sunflower.core.db.photo
 
 import com.example.sunflower.app.photo.data.data.PhotoEntity
+import com.example.sunflower.core.db.photo.PhotoDao
 import javax.inject.Inject
 
 class PhotoRepository @Inject constructor(
@@ -12,5 +13,9 @@ class PhotoRepository @Inject constructor(
 
     suspend fun getAllPhotoInfo(): List<PhotoEntity> {
         return photoInfoDao.getAllPhotoInfo()
+    }
+
+    suspend fun delete(id: String) {
+        return photoInfoDao.deletePhotoById(id)
     }
 }

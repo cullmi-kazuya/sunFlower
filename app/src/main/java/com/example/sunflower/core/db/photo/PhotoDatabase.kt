@@ -1,4 +1,4 @@
-package com.example.sunflower.app.photo.data.db
+package com.example.sunflower.core.db.photo
 
 import android.content.Context
 import androidx.room.Database

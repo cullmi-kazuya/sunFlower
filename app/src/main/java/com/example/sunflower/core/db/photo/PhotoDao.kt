@@ -1,4 +1,4 @@
-package com.example.sunflower.app.photo.data.db
+package com.example.sunflower.core.db.photo
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -13,4 +13,7 @@ interface PhotoDao {
 
     @Query("SELECT * FROM photo_table")
     suspend fun getAllPhotoInfo(): List<PhotoEntity>
+
+    @Query("DELETE FROM photo_table WHERE id = :id")
+    suspend fun deletePhotoById(id: String)
 }

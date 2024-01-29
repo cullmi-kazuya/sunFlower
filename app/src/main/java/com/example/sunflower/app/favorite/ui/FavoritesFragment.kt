@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunflower.R
 import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
+import com.example.sunflower.app.home.ui.HomeTabFragmentDirections
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.photo.data.data.PhotoEntity
 import com.example.sunflower.app.photoList.ui.PhotoListFragmentDirections
@@ -56,7 +57,7 @@ class FavoritesFragment : Fragment() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
                         val photo = photoList[position]
-                        val action = PhotoListFragmentDirections.actionPhotoListFragmentToPhotoFragment(
+                        val action = HomeTabFragmentDirections.actionHomeTabFragmentToPhotoFragment(
                             photo
                         )
                         findNavController().navigate(action)

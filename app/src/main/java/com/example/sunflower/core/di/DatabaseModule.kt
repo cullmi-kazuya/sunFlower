@@ -2,9 +2,9 @@ package com.example.sunflower.core.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.sunflower.app.photo.data.db.PhotoDatabase
-import com.example.sunflower.app.photo.data.db.PhotoDao
-import com.example.sunflower.app.photo.data.db.PhotoRepository
+import com.example.sunflower.core.db.photo.PhotoDatabase
+import com.example.sunflower.core.db.photo.PhotoDao
+import com.example.sunflower.core.db.photo.PhotoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.sunflower.R
 import com.example.sunflower.app.photo.data.data.PhotoEntity
 import com.squareup.picasso.Picasso
@@ -53,16 +54,15 @@ class PhotoFragment : Fragment() {
 
         val favoriteButton = view.findViewById<ImageButton>(R.id.favoriteButton)
         favoriteButton.setOnClickListener {
-            val entity = PhotoEntity(
-                photo.id,
-                photo.userId,
-                photo.username,
-                photo.photoCellImageUrl,
-                photo.photoImageUrl,
-                photo.photographerImageUrl,
-                photo.photoText
-            )
-            viewModel.inertPhoto(entity)
+            viewModel.changeFavoriteState(photo)
         }
+        viewModel.isFavorite.observe(viewLifecycleOwner, Observer { isFavorite ->
+            if (isFavorite) {
+                favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
+            } else {
+                favoriteButton.setImageResource(android.R.drawable.btn_star_big_off)
+            }
+        })
+        viewModel.initFavoriteState(photo.id)
     }
 }
