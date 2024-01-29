@@ -34,7 +34,13 @@ class CustomCellAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun addData(newData: List<CellItem>) {
-        dataList.addAll(newData)
+        this.dataList.addAll(newData)
         notifyDataSetChanged()
+    }
+
+    fun setData(newData: List<CellItem>) {
+        this.dataList.clear()
+        this.dataList.addAll(newData)
+        notifyItemRangeInserted(0, newData.size)
     }
 }

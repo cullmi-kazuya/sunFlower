@@ -15,11 +15,13 @@ import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.home.ui.RecyclerScrollListener
-import com.example.sunflower.app.photoList.data.model.PhotoInfo
+import com.example.sunflower.app.photo.data.data.PhotoPageData
+import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PhotoListFragment : Fragment() {
+
     private val viewModel: PhotoListViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private val photoList: MutableList<PhotoInfo> = mutableListOf()
@@ -65,10 +67,7 @@ class PhotoListFragment : Fragment() {
                     override fun onItemClick(view: View, position: Int) {
                         val photo = photoList[position]
                         val action = PhotoListFragmentDirections.actionPhotoListFragmentToPhotoFragment(
-                            photo.photoImageUrl,
-                            photo.photographerImageUrl,
-                            photo.username,
-                            photo.photoText
+                            photo
                         )
                         findNavController().navigate(action)
                     }

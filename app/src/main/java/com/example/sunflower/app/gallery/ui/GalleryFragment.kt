@@ -55,7 +55,7 @@ class GalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.initRecycleView(recyclerView = view.findViewById(R.id.recyclerList))
+        this.initRecycleView(view.findViewById(R.id.galleryRecyclerList))
     }
 
     private fun initRecycleView(recyclerView: RecyclerView) {

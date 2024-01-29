@@ -1,4 +1,4 @@
-package com.example.sunflower.app.photoList.data.model
+package com.example.sunflower.app.photoList.data.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

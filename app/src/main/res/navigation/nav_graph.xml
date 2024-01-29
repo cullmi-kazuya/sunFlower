@@ -27,17 +27,8 @@
             android:id="@+id/action_homeTabFragment_to_photoFragment"
             app:destination="@id/photoFragment">
             <argument
-                android:name="imageUrl"
-                app:argType="string" />
-            <argument
-                android:name="photographerImageName"
-                app:argType="string" />
-            <argument
-                android:name="photographerName"
-                app:argType="string" />
-            <argument
-                android:name="photoText"
-                app:argType="string" />
+                android:name="photoData"
+                app:argType="com.example.sunflower.app.photoList.data.data.PhotoInfo" />
         </action>
     </fragment>
 
@@ -64,17 +55,8 @@
             android:id="@+id/action_photoListFragment_to_photoFragment"
             app:destination="@id/photoFragment">
             <argument
-                android:name="photoImageUrl"
-                app:argType="string" />
-            <argument
-                android:name="photographerImageUrl"
-                app:argType="string" />
-            <argument
-                android:name="photographerName"
-                app:argType="string" />
-            <argument
-                android:name="photoText"
-                app:argType="string" />
+                android:name="photoData"
+                app:argType="com.example.sunflower.app.photoList.data.data.PhotoInfo" />
         </action>
     </fragment>
 

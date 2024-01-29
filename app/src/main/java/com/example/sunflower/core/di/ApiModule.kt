@@ -1,4 +1,4 @@
-package com.example.sunflower.di
+package com.example.sunflower.core.di
 
 import com.example.sunflower.app.photoList.data.api.UnsplashApiService
 import com.example.sunflower.app.photoList.data.api.UnsplashApiBuilder

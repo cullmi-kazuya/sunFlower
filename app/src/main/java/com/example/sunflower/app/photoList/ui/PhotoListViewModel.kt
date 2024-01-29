@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.sunflower.app.photoList.data.logic.SearchPhotosLogic
-import com.example.sunflower.app.photoList.data.model.Photo
-import com.example.sunflower.app.photoList.data.model.PhotoInfo
+import com.example.sunflower.app.photoList.data.data.Photo
+import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -40,7 +40,7 @@ class PhotoListViewModel @Inject constructor(
             PhotoInfo(
                 id = photo.id,
                 userId = photo.user.id,
-                username = photo.user.username,
+                username = photo.user.name,
                 photoCellImageUrl = photo.urls.small,
                 photoImageUrl = photo.urls.regular,
                 photographerImageUrl = photo.urls.small, // 仮
