@@ -1,7 +1,6 @@
 package com.example.sunflower.app.favorite.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.photo.data.data.PhotoEntity
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import com.example.sunflower.app.photoList.ui.PhotoListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -59,15 +57,7 @@ class FavoritesFragment : Fragment() {
                     override fun onItemClick(view: View, position: Int) {
                         val photo = photoList[position]
                         val action = PhotoListFragmentDirections.actionPhotoListFragmentToPhotoFragment(
-                            PhotoInfo(
-                                photo.id,
-                                photo.userId,
-                                photo.username,
-                                photo.photoCellImageUrl,
-                                photo.photoImageUrl,
-                                photo.photographerImageUrl,
-                                photo.photoText
-                            )
+                            photo
                         )
                         findNavController().navigate(action)
                     }

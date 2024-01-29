@@ -28,7 +28,7 @@
             app:destination="@id/photoFragment">
             <argument
                 android:name="photoData"
-                app:argType="com.example.sunflower.app.photoList.data.data.PhotoInfo" />
+                app:argType="com.example.sunflower.app.photo.data.data.PhotoEntity" />
         </action>
     </fragment>
 
@@ -56,7 +56,7 @@
             app:destination="@id/photoFragment">
             <argument
                 android:name="photoData"
-                app:argType="com.example.sunflower.app.photoList.data.data.PhotoInfo" />
+                app:argType="com.example.sunflower.app.photo.data.data.PhotoEntity" />
         </action>
     </fragment>
 

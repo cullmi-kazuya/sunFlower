@@ -1,8 +1,6 @@
 package com.example.sunflower.app.photoList.data.logic
 
 import com.example.sunflower.app.photoList.data.api.UnsplashApiService
-import com.example.sunflower.app.photo.data.db.PhotoRepository
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import com.example.sunflower.app.photoList.data.data.UnsplashSearchPhotosResponse
 import javax.inject.Inject
 

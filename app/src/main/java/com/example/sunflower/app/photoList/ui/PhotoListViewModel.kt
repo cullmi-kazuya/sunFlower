@@ -3,9 +3,9 @@ package com.example.sunflower.app.photoList.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.sunflower.app.photo.data.data.PhotoEntity
 import com.example.sunflower.app.photoList.data.logic.SearchPhotosLogic
 import com.example.sunflower.app.photoList.data.data.Photo
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -15,8 +15,8 @@ class PhotoListViewModel @Inject constructor(
     private val logic: SearchPhotosLogic
 ) : ViewModel() {
 
-    private var _photoList = MutableLiveData<List<PhotoInfo>>()
-    val photoList: LiveData<List<PhotoInfo>> get() = _photoList
+    private var _photoList = MutableLiveData<List<PhotoEntity>>()
+    val photoList: LiveData<List<PhotoEntity>> get() = _photoList
 
     private var pageCount = 0;
     private var fruitsName: String = ""
@@ -35,9 +35,9 @@ class PhotoListViewModel @Inject constructor(
         _photoList.value = photoList
     }
 
-    private fun createPhotoInfoList(photoList: List<Photo>): List<PhotoInfo> {
+    private fun createPhotoInfoList(photoList: List<Photo>): List<PhotoEntity> {
         return photoList.map { photo ->
-            PhotoInfo(
+            PhotoEntity(
                 id = photo.id,
                 userId = photo.user.id,
                 username = photo.user.name,

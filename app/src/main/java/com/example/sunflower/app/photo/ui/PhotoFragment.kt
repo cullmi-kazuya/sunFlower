@@ -9,13 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.sunflower.R
-import com.example.sunflower.app.fruitsDetail.ui.FruitsDetailFragmentDirections
 import com.example.sunflower.app.photo.data.data.PhotoEntity
-import com.example.sunflower.app.photo.data.data.PhotoPageData
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
-import com.example.sunflower.app.photoList.ui.PhotoListViewModel
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,7 +29,7 @@ class PhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val photo: PhotoInfo = arguments?.getParcelable("photoData")!!
+        val photo: PhotoEntity = arguments?.getParcelable("photoData")!!
 
         val photoImageView = view.findViewById<ImageView>(R.id.photoImage)
         val photoImageUrl = photo.photoImageUrl

@@ -15,8 +15,7 @@ import com.example.sunflower.app.home.data.CellItem
 import com.example.sunflower.app.home.ui.CustomCellAdapter
 import com.example.sunflower.app.home.ui.RecyclerItemClickListener
 import com.example.sunflower.app.home.ui.RecyclerScrollListener
-import com.example.sunflower.app.photo.data.data.PhotoPageData
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
+import com.example.sunflower.app.photo.data.data.PhotoEntity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +23,7 @@ class PhotoListFragment : Fragment() {
 
     private val viewModel: PhotoListViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
-    private val photoList: MutableList<PhotoInfo> = mutableListOf()
+    private val photoList: MutableList<PhotoEntity> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,7 +75,7 @@ class PhotoListFragment : Fragment() {
         )
     }
 
-    private fun convertToCellItemList(photoList: List<PhotoInfo>): List<CellItem> {
+    private fun convertToCellItemList(photoList: List<PhotoEntity>): List<CellItem> {
         return photoList.map { photo ->
             CellItem(
                 photo.username,

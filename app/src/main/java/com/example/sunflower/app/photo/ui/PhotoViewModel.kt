@@ -6,7 +6,6 @@ import kotlinx.coroutines.Dispatchers
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sunflower.app.photo.data.data.PhotoEntity
-import com.example.sunflower.app.photoList.data.data.PhotoInfo
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
